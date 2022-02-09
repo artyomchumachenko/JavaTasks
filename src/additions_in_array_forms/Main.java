@@ -3,6 +3,8 @@ package additions_in_array_forms;
 import java.util.Arrays;
 
 public class Main {
+    public static final int TEN = 10;
+    public static final int ONE = 1;
 
     public static void main(String[] args) {
         int[] a = {9, 4, 3};
@@ -11,25 +13,14 @@ public class Main {
         boolean increaseArray = false;
         int aLength = a.length;
         int bLength = b.length;
-        int smallerArray = Math.min(aLength, bLength);
         int biggestArray = Math.max(aLength, bLength);
 
-        int[] buffer1 = new int[biggestArray]; // был меньший стал такой же и перенес значения
-        int[] buffer2 = new int[biggestArray];
+        int[] buffer1 = new int[biggestArray]; // меньший массив, но того же размера
+        int[] buffer2; // больший массив
         if (aLength > bLength) {
-            buffer2 = a;
-            for (int i = 0; i < bLength; i++) {
-                buffer1[aLength - 1 - i] = b[bLength - 1 - i];
-            }
-            System.out.println(Arrays.toString(buffer1));
-            System.out.println(Arrays.toString(buffer2));
+            buffer2 = fillingSmallerArray(a, b, aLength, bLength, buffer1);
         } else if (aLength < bLength) {
-            buffer2 = b;
-            for (int i = 0; i < aLength; i++) {
-                buffer1[bLength - 1 - i] = a[aLength - 1 - i];
-            }
-            System.out.println(Arrays.toString(buffer1));
-            System.out.println(Arrays.toString(buffer2));
+            buffer2 = fillingSmallerArray(b, a, bLength, aLength, buffer1);
         } else {
             buffer1 = a;
             buffer2 = b;
@@ -44,17 +35,36 @@ public class Main {
             if (plusTen) {
                 resultBuffer[biggestArray - 1 - i]++;
             }
-            if (resultBuffer[0] >= 10) {
+            if (resultBuffer[0] >= TEN) {
                 increaseArray = true;
             }
-            if (resultBuffer[biggestArray - 1 - i] >= 10) {
-                resultBuffer[biggestArray - 1 - i] -= 10;
+            if (resultBuffer[biggestArray - 1 - i] >= TEN) {
+                resultBuffer[biggestArray - 1 - i] -= TEN;
                 plusTen = true;
             } else {
                 plusTen = false;
             }
         }
+        if (increaseArray) {
+            result = new int[biggestArray + 1];
+            result[0] = ONE;
+            System.arraycopy(resultBuffer, 0, result, 1, biggestArray);
+        } else {
+            result = resultBuffer;
+        }
         System.out.println(Arrays.toString(resultBuffer));
         System.out.println(increaseArray);
+        System.out.println(Arrays.toString(result));
+    }
+
+    private static int[] fillingSmallerArray(int[] a, int[] b, int aLength, int bLength, int[] buffer1) {
+        int[] buffer2;
+        buffer2 = a;
+        for (int i = 0; i < bLength; i++) {
+            buffer1[aLength - 1 - i] = b[bLength - 1 - i];
+        }
+        System.out.println(Arrays.toString(buffer1));
+        System.out.println(Arrays.toString(buffer2));
+        return buffer2;
     }
 }
