@@ -7,8 +7,8 @@ public class Main {
     public static final int ONE = 1;
 
     public static void main(String[] args) {
-        int[] a = {9, 4, 3};
-        int[] b = {6, 8, 8};
+        int[] a = {9, 9, 9};
+        int[] b = {1};
 
         boolean increaseArray = false;
         int aLength = a.length;
