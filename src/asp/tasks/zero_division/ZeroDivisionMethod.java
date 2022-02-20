@@ -1,6 +1,6 @@
-package zero_division_method;
+package asp.tasks.zero_division;
 
-public class Main {
+public class ZeroDivisionMethod {
     public static final int TEN = 10;
 
     public static void main(String[] args) {

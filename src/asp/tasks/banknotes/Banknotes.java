@@ -1,8 +1,8 @@
-package asp.tasks;
+package asp.tasks.banknotes;
 
 import java.util.Scanner;
 
-public class Task1 {
+public class Banknotes {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);

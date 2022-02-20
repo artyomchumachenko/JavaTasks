@@ -1,8 +1,8 @@
-package additions_in_array_forms;
+package asp.tasks.additions_in_array_forms;
 
 import java.util.Arrays;
 
-public class Main {
+public class AdditionsInArrayForms {
     public static final int TEN = 10;
     public static final int ONE = 1;
 
